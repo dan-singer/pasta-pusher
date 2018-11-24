@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour {
 
 	public event Action<int> PastaChanged;
 
+	/// <summary>
+	/// Invoked when pps causes pasta to go up
+	/// </summary>
+	public event Action Ticked;
 	private int pasta;
 
 	/// <summary>
@@ -42,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
 
 	public event Action<int> PPCChanged;
-	private int ppc;
+	private int ppc = 1;
 
 	/// <summary>
 	/// Pasta-per-click
@@ -59,9 +63,25 @@ public class GameManager : MonoBehaviour {
 		} 
 	}
 
+	public int PPS{ get; private set; }
+
 	public Item[] ShopItems;
 
-	public event Action<Sprite> PastaSpriteChanged;
+	public event Action PowerupReceived, PowerupOver;
+
+
+	private float timer = 0;
+	void Start()
+	{
+	}
+
+	void Update()
+	{
+		if (Time.time > timer + 1) {
+			Pasta += PPS;
+			timer = Time.time;
+		}
+	}
 
 	public void ReceivePasta()
 	{
@@ -70,12 +90,27 @@ public class GameManager : MonoBehaviour {
 
 	public void ReceiveUpgrade(Item item)
 	{
-		PPC += item.Value;
-		if (item is PastaItem){
-			PastaItem pi = (PastaItem)item;
-			if (PastaSpriteChanged != null){
-				PastaSpriteChanged(pi.pastaSpr);
-			}
+		switch (item.Type){
+			case ItemType.PPC:
+				PPC = item.Value * PPC;
+				break;
+			case ItemType.PPS:
+				PPS += item.Value;
+				break;
+			case ItemType.TempPPC:
+				if (PowerupReceived != null)
+					PowerupReceived();
+				StartCoroutine(DelayResetPPC(item.Duration, PPC));
+				PPC = item.Value * PPC;
+				break;
 		}
+	}
+
+	IEnumerator DelayResetPPC(float delay, int resetVal)
+	{
+		yield return new WaitForSeconds(delay);
+		PPC = resetVal;
+		if (PowerupOver != null)
+			PowerupOver();
 	}
 }

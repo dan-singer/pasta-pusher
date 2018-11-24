@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4622edb19135e145861ba2c19e0cc21, type: 3}
   m_Name: IncreasePPC
   m_EditorClassIdentifier: 
-  Name: PPC++
-  Description: Increases the amount of pasta you get for each click
-  Cost: 10
-  Value: 1
+  Name: Stirring Spoon
+  Description: Tap Modifier x2
+  Cost: 1400
+  Value: 2
+  Duration: 0
+  Type: 0
