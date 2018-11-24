@@ -5,13 +5,13 @@ using TMPro;
 public class UIManager : MonoBehaviour {
 
 
-	public TextMeshProUGUI Pasta;
+	public TextMeshProUGUI PastaMain;
 
 
 	// Use this for initialization
 	void Start () {
 		GameManager.Instance.PastaChanged += (newVal) => {
-			Pasta.text = newVal.ToString();
+			PastaMain.text = newVal.ToString();
 		};
 	}
 	
