@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour {
 
 	public void ReceiveUpgrade(Item item)
 	{
+		Pasta -= item.Cost;
 		switch (item.Type){
 			case ItemType.PPC:
 				PPC = item.Value * PPC;

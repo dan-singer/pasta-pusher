@@ -8,11 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b4622edb19135e145861ba2c19e0cc21, type: 3}
   m_Name: Penne
   m_EditorClassIdentifier: Assembly-CSharp::PastaItem
-  Name: Penne
-  Description: Switch to Penne and increase PPC by 5
-  Cost: 100
-  Value: 5
-  pastaSpr: {fileID: 0}
+  Name: Boiler Pot
+  Description: +1 Pasta Per Second
+  Cost: 9
+  Value: 1
+  Duration: 0
+  Type: 1
