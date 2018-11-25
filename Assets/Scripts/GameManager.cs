@@ -71,16 +71,32 @@ public class GameManager : MonoBehaviour {
 
 
 	private float timer = 0;
+	private bool isPaused = false;
 	void Start()
 	{
+		Pasta = 0;
 	}
 
 	void Update()
 	{
+		if (isPaused)
+			return;
 		if (Time.time > timer + 1) {
 			Pasta += PPS;
 			timer = Time.time;
 		}
+	}
+
+	public void Pause()
+	{
+		isPaused = true;
+		Time.timeScale = 0;
+	}
+
+	public void Resume()
+	{
+		isPaused = false;
+		Time.timeScale = 1;
 	}
 
 	public void ReceivePasta()
