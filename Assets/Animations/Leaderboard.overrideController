@@ -5,6 +5,8 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Main
+  m_Name: Leaderboard
   m_Controller: {fileID: 9100000, guid: 2e4cbdb5e712a34498511073eb1060e0, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c916af5505ab87449b8be5fd40440259, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 593c1d7cd7f8b044fa5503656332b135, type: 2}

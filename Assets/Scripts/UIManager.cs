@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour {
 	public TextMeshProUGUI PastaMain, PastaShopText;
 	public RectTransform ItemsParent;
 	public GameObject UIItemPrefab;
+    public Spawner PastaFeedbackSpawner;
+
+    private int prevPasta = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +24,11 @@ public class UIManager : MonoBehaviour {
 		GameManager.Instance.PastaChanged += (newVal) => {
 			PastaMain.text = newVal.ToString();
 			PastaShopText.text = "In Pot: " + newVal.ToString();
+            int delta = newVal - prevPasta;
+            for (int i = 0; i < delta; ++i) {
+                PastaFeedbackSpawner.Spawn();
+            }
+            prevPasta = newVal;
 		};
 
 		// Logic for clicking inventory items
