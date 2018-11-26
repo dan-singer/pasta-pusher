@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour {
     private int prevPasta = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		// Keep pasta in sync with the model
 		GameManager.Instance.PastaChanged += (newVal) => {
 			PastaMain.text = newVal.ToString();

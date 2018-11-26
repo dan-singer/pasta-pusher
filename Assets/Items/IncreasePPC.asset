@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Stirring Spoon
   Description: Tap Modifier x2
-  Cost: 1400
+  Cost: 100
   Value: 2
   Duration: 0
   Type: 0

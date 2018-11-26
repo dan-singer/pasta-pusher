@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PastaItem
   Name: Boiler Pot
   Description: +1 Pasta Per Second
-  Cost: 9
+  Cost: 20
   Value: 1
   Duration: 0
   Type: 1
