@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb606d5b24dd4442b1b22b07a69ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yVel: -100
+  yVel: 100
   timeBeforeFadeOut: 1
   fadeOutDuration: 1
 --- !u!222 &222580202319327870
