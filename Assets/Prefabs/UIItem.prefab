@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 222312419420479250}
   - component: {fileID: 114385948982245052}
   - component: {fileID: 114938333519685188}
+  - component: {fileID: 114253260923351348}
   m_Layer: 5
   m_Name: UIItem
   m_TagString: Untagged
@@ -283,6 +284,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114253260923351348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478471315357998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596f4bcb8864921479a5c0a42b20d66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: {fileID: 114009919074222980}
+  Description: {fileID: 114971366215002834}
+  Cost: {fileID: 114555484516739232}
+  MainButton: {fileID: 114784747087994260}
 --- !u!114 &114385948982245052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +462,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_PressedColor: {r: 0.515434, g: 1, b: 0.4292453, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.69803923}
     m_ColorMultiplier: 1.53
     m_FadeDuration: 0.03
   m_SpriteState:

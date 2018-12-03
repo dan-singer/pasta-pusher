@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour {
     public Spawner PastaFeedbackSpawner;
 
     private int prevPasta = 0;
+    private Dictionary<Item, UIItem> ItemMapping;
 
 	// Use this for initialization
 	void Awake () {
@@ -29,33 +30,41 @@ public class UIManager : MonoBehaviour {
                 PastaFeedbackSpawner.Spawn();
             }
             prevPasta = newVal;
+            foreach (Item key in ItemMapping.Keys)
+            {
+                bool interactable = newVal >= key.Cost;
+                ItemMapping[key].MainButton.interactable = interactable;
+            }
 		};
 
-		// Logic for clicking inventory items
+        // Logic for clicking inventory items
+        ItemMapping = new Dictionary<Item, UIItem>();
 		foreach (Item item in GameManager.Instance.ShopItems){
-			GameObject uiItem = Instantiate(UIItemPrefab, ItemsParent);
-			uiItem.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = item.Name;
-			uiItem.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = item.Description;
-			uiItem.transform.Find("Cost").GetComponent<TextMeshProUGUI>().text = item.Cost.ToString();
-			
-			Button b = uiItem.GetComponent<Button>();
+			GameObject itemGO = Instantiate(UIItemPrefab, ItemsParent);
+            UIItem uiItem = itemGO.GetComponent<UIItem>();
+			uiItem.Title.text = item.Name;
+			uiItem.Description.text = item.Description;
+			uiItem.Cost.text = item.Cost.ToString();
 
+            ItemMapping[item] = uiItem;
+			
+			Button itemButtonComponent = uiItem.GetComponent<Button>();
 
 			// We need to set colors on pointer enter because click will not set them before click
 			var pointerEnterEntry = new EventTrigger.Entry();
 			pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
 			pointerEnterEntry.callback.AddListener((eventData) => {
-				ColorBlock colors = b.colors;
+				ColorBlock colors = itemButtonComponent.colors;
 				if (GameManager.Instance.Pasta >= item.Cost){
 					colors.pressedColor = Color.green;
-					b.colors = colors;
+					itemButtonComponent.colors = colors;
 				} else{
 					colors.pressedColor = Color.red;
-					b.colors = colors;
+					itemButtonComponent.colors = colors;
 				}
 			});
 			
-			b.onClick.AddListener(() => {
+			itemButtonComponent.onClick.AddListener(() => {
 				if (GameManager.Instance.Pasta >= item.Cost){
 					GameManager.Instance.ReceiveUpgrade(item);
 				}
