@@ -13,7 +13,6 @@ public class Spawner : MonoBehaviour {
     public void Spawn()
     {
         RectTransform rt = GetComponent<RectTransform>();
-        print(rt.sizeDelta);
         Vector2 spawnMin = -rt.sizeDelta / 2;
         Vector2 spawnMax = rt.sizeDelta / 2;
         Vector2 spawnPos = new Vector2(
