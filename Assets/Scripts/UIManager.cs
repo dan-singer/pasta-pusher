@@ -158,11 +158,17 @@ public class UIManager : MonoBehaviour {
                             if (GameManager.Instance.state == GameManager.State.Main) {
                                 GameManager.Instance.SetState((int)GameManager.State.Shop);
                             }
+                            else if (GameManager.Instance.state == GameManager.State.Leaderboard) {
+                                GameManager.Instance.SetState((int)GameManager.State.Main);
+                            }
                         }
                         // Swipe to the left
                         else {
                             if (GameManager.Instance.state == GameManager.State.Main) {
                                 GameManager.Instance.SetState((int)GameManager.State.Leaderboard);
+                            }
+                            else if (GameManager.Instance.state == GameManager.State.Shop) {
+                                GameManager.Instance.SetState((int)GameManager.State.Main);
                             }
                         }
                     }
