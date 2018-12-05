@@ -29,15 +29,26 @@ public class GameManager : MonoBehaviour {
 	public event Action Ticked;
 	private int pasta;
 
-	/// <summary>
-	/// The current amount of pasta
-	/// </summary>
-	public int Pasta{
+
+    public event Action<Item> ItemBecameAvailable;
+
+
+    /// <summary>
+    /// The current amount of pasta
+    /// </summary>
+    public int Pasta{
 		get{
 			return pasta;
 		}
 		private set{
-			pasta = value;
+            for (int i = 0; i < ShopItems.Length; ++i)
+            {
+                if (ItemBecameAvailable != null && pasta < ShopItems[i].Cost && value >= ShopItems[i].Cost)
+                {
+                    ItemBecameAvailable(ShopItems[i]);
+                }
+            }
+            pasta = value;
 			if (PastaChanged != null){
 				PastaChanged(pasta);
 			}
@@ -46,7 +57,12 @@ public class GameManager : MonoBehaviour {
 
 
 	public event Action<int> PPCChanged;
+    /// <summary>
+    /// Pasta Per Click
+    /// </summary>
 	private int ppc = 1;
+
+
 
 	/// <summary>
 	/// Pasta-per-click

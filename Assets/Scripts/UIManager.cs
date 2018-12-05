@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour {
 	public RectTransform ItemsParent;
 	public GameObject UIItemPrefab;
     public Spawner PastaFeedbackSpawner;
+    public GameObject NotificationMarker;
 
     private int prevPasta = 0;
     private Dictionary<Item, UIItem> ItemMapping;
@@ -36,6 +37,11 @@ public class UIManager : MonoBehaviour {
                 ItemMapping[key].MainButton.interactable = interactable;
             }
 		};
+
+        GameManager.Instance.ItemBecameAvailable += (item) =>
+        {
+            SetShopNotification(true);
+        };
 
         // Logic for clicking inventory items
         ItemMapping = new Dictionary<Item, UIItem>();
@@ -79,6 +85,14 @@ public class UIManager : MonoBehaviour {
 	{
 		panel.GetComponent<Animator>().SetTrigger("Toggle");
 	}
+
+    public void SetShopNotification(bool visible)
+    {
+        if (NotificationMarker)
+        {
+            NotificationMarker.GetComponent<Image>().enabled = visible;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
