@@ -27,8 +27,10 @@ public class UIManager : MonoBehaviour {
 			PastaMain.text = newVal.ToString();
 			PastaShopText.text = "In Pot: " + newVal.ToString();
             int delta = newVal - prevPasta;
-            for (int i = 0; i < delta; ++i) {
-                PastaFeedbackSpawner.Spawn();
+            if (delta > 0)
+            {
+                PastaParticle particle = PastaFeedbackSpawner.Spawn().GetComponent<PastaParticle>();
+                particle.quantityText.text = "+" + delta;
             }
             prevPasta = newVal;
             foreach (Item key in ItemMapping.Keys)

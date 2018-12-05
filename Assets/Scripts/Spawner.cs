@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 	}
 
-    public void Spawn()
+    public GameObject Spawn()
     {
         RectTransform rt = GetComponent<RectTransform>();
         Vector2 spawnMin = -rt.sizeDelta / 2;
@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour {
         GameObject spawnedObj = Instantiate(ToSpawn);
         spawnedObj.transform.SetParent(rt, false);
         spawnedObj.GetComponent<RectTransform>().anchoredPosition = spawnPos;
+        return spawnedObj;
     }
 
     // Update is called once per frame
