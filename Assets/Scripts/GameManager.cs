@@ -171,13 +171,13 @@ public class GameManager : MonoBehaviour {
         this.state = (State)state;
         switch (this.state) {
             case State.Main:
-                Resume();
+                //Resume();
                 break;
             case State.Shop:
-                Pause();
+                //Pause();
                 break;
             case State.Leaderboard:
-                Pause();
+                //Pause();
                 break;
             default:
                 break;
